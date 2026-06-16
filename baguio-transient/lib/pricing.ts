@@ -40,12 +40,12 @@ export function calculatePrice(
       (r) => dateStr >= r.start_date && dateStr <= r.end_date
     );
     nights.push({
-      date: dateStr,
-      basePrice: match?.base_price ?? PROPERTY.defaultBasePrice,
-      extraPaxPrice: match?.extra_pax_price ?? PROPERTY.defaultExtraPaxPrice,
-      includedPax: match?.included_pax ?? PROPERTY.defaultIncludedPax,
-      rateName: match?.rate_name ?? "Standard Rate",
-    });
+  date: dateStr,
+  basePrice: match?.base_price ?? (PROPERTY as any).defaultBasePrice,
+  extraPaxPrice: match?.extra_pax_price ?? (PROPERTY as any).defaultExtraPaxPrice,
+  includedPax: match?.included_pax ?? (PROPERTY as any).defaultIncludedPax,
+  rateName: match?.rate_name ?? "Standard Rate",
+});
     cursor.setDate(cursor.getDate() + 1);
   }
 
