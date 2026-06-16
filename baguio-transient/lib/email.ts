@@ -89,7 +89,7 @@ function bookingConfirmedGuestHtml(b: Booking): string {
     <p><strong>Check-in:</strong> ${b.check_in} at ${PROPERTY.checkInTime}</p>
     <p><strong>Check-out:</strong> ${b.check_out} by ${PROPERTY.checkOutTime}</p>
     <p><strong>Remaining Balance:</strong> ₱${b.remaining_balance.toLocaleString()} (due on arrival)</p>
-    <p>For inquiries, contact us at ${PROPERTY.contact.phone}</p>
+    <p>For inquiries, contact us at ${(PROPERTY as any).contact?.phone || "our registered number"}</p>
   `;
 }
 
@@ -98,6 +98,6 @@ function bookingRejectedGuestHtml(b: Booking): string {
     <h2>Booking Update</h2>
     <p>Hi ${b.guest_name}, unfortunately we were unable to confirm your booking.</p>
     ${b.rejection_reason ? `<p><strong>Reason:</strong> ${b.rejection_reason}</p>` : ""}
-    <p>Please try different dates or contact us at ${PROPERTY.contact.phone}.</p>
+    <p>Please try different dates or contact us at ${(PROPERTY as any).contact?.phone || "our registered number"}.</p>
   `;
-}s
+}
